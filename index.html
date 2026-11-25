@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartPark</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header class="bay">
+      <h1>SmartPark</h1>
+      <p>Parking manager for 12 slots. Vehicles wait in order when the area is full.</p>
+    </header>
+
+    <!-- The form action must match the URL of smartpark.cgi on your server -->
+    <form action="/cgi-bin/smartpark.cgi" method="post" class="panel">
+      <label for="vehicle">Vehicle number</label>
+      <input type="text" id="vehicle" name="vehicle" maxlength="23"
+             placeholder="e.g. KA01AB1234" autocomplete="off">
+
+      <div class="actions">
+        <button type="submit" name="action" value="book" class="primary">Book slot</button>
+        <button type="submit" name="action" value="release">Release slot</button>
+        <button type="submit" name="action" value="search">Search vehicle</button>
+      </div>
+
+      <div class="actions secondary">
+        <button type="submit" name="action" value="undo">Undo last change</button>
+        <button type="submit" name="action" value="display">View slots</button>
+      </div>
+    </form>
+
+    <p class="note">
+      Booking gives the first free slot. If all 12 are taken, the vehicle joins the
+      waiting queue. Releasing a slot hands it to the vehicle that has waited longest.
+    </p>
+  </main>
+</body>
+</html>
